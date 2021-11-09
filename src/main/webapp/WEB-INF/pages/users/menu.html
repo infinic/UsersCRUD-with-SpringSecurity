@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="menu">
+        <div class="pure-menu home-menu pure-menu-horizontal">
+            <a th:href="@{/users}" class="pure-menu-heading pure-menu-link">Main</a>
+            <a th:href="@{/users/new}" class="pure-menu-heading pure-menu-link">New user</a>
+        </div>
+        <br />
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New user</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+</head>
+<body>
+    <div th:insert="~{users/menu :: menu}"></div>
+
+    <form class="pure-form pure-form-aligned" th:method="post" th:action="@{/users}" th:object="${user}">
+        <div class="pure-control-group">
+            <label th:for="name">Name:</label>
+            <input type="text" th:field="*{name}" />
+        </div>
+        <div class="pure-control-group">
+            <label th:for="lastname">Lastname:</label>
+            <input type="text" th:field="*{lastname}" />
+        </div>
+        <div class="pure-control-group">
+            <label th:for="age">Age: </label>
+            <input type="text" th:field="*{age}" />
+        </div>
+        <div class="pure-control-group pure-u-1-4">
+            <label th:for="role">Role: </label>
+            <select th:field="*{role}">
+                <option value="User">User</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+        </div>
+        <div class="pure-control-group">
+            <input class="pure-button pure-button-primary pure-u-1-4" type="submit" value="Create!">
+        </div>
+    </form>
+</body>
+</html>

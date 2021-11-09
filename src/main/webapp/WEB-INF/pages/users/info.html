@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User info</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+</head>
+<body>
+    <div th:insert="~{users/menu :: menu}"></div>
+
+    <div>
+        Id: <span th:text="${user.getId()}"></span><br />
+        Name: <span th:text="${user.getName()}"></span><br />
+        Lastname: <span th:text="${user.getLastname()}"></span><br />
+        Age: <span th:text="${user.getAge()}"></span><br />
+        Role: <span th:text="${user.getRole()}"></span><br />
+        <div>
+            <form class="pure-form" th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">
+                <a class="pure-button-secondary pure-button" th:href="@{/users/{id}/edit(id=${user.getId()})}">Modify</a>
+                <input class="pure-button-primary pure-button" type="submit" value="Delete">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
