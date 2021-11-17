@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.util.Properties;
 /**
  * @author Oleg Kadochnikov
  */
+
 @Configuration
 @EnableJpaRepositories
 @EnableTransactionManagement
@@ -55,7 +57,6 @@ public class DatabaseConfig {
         dataSource.setUrl(env.getRequiredProperty("db.url"));
         dataSource.setUsername(env.getRequiredProperty("db.username"));
         dataSource.setPassword(env.getRequiredProperty("db.password"));
-
         return dataSource;
     }
 

@@ -6,27 +6,27 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
 </head>
 <body>
-    <div th:insert="~{users/menu :: menu}"></div>
+    <div th:insert="~{common/menu :: menu}"></div>
 
     <table class="pure-table">
         <thead>
         <tr>
             <td>Name</td>
-            <td>Lastname</td>
-            <td>Age</td>
-            <td>Role</td>
+            <td>Username</td>
+            <td>Roles</td>
+            <td>Enabled</td>
             <td>Actions</td>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user : ${users}">
-            <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getName()}"></a></td>
-            <td th:text="${user.getLastname()}"></td>
-            <td th:text="${user.getAge()}"></td>
-            <td th:text="${user.getRole()}"></td>
+            <td><a th:href="@{/admin/users/{id}(id=${user.getId()})}" th:text="${user.getName()}"></a></td>
+            <td th:text="${user.getUsername()}"></td>
+            <td><div th:each="role : ${user.getRoles()}" th:text="${role.getLabel()}"></div></td>
+            <td th:text="(${user.isEnabled()} ? 'Yes' : 'No')"></td>
             <td>
-                <form class="pure-form" th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">
-                    <a class="pure-button-secondary pure-button" th:href="@{/users/{id}/edit(id=${user.getId()})}">Modify</a>
+                <form class="pure-form" th:method="delete" th:action="@{/admin/users/{id}(id=${user.getId()})}">
+                    <a class="pure-button-secondary pure-button" th:href="@{/admin/users/{id}/edit(id=${user.getId()})}">Modify</a>
                     <input class="pure-button-primary pure-button" type="submit" value="Delete">
                 </form>
             </td>

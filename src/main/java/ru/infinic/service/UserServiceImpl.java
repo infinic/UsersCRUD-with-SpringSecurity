@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.infinic.dao.UserDAO;
 import ru.infinic.model.User;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
 /**
- * @author infinic
+ * @author Oleg Kadochnikov
  */
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -42,16 +44,20 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void deleteUserById(long id) {
-        User user = userDAO.getUser(id);
+        User user = userDAO.getUserById(id);
         userDAO.deleteUser(user);
     }
 
     @Override
-    public User getUser(long id) { return userDAO.getUser(id); }
+    public User getUserById(long id) { return userDAO.getUserById(id); }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userDAO.getUserByUsername(username);
+    }
 
     @Override
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
     }
-
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+    <div th:fragment="menu">
+        <div class="pure-menu home-menu pure-menu-horizontal">
+            <a th:href="@{/}" class="pure-menu-heading pure-menu-link">Main</a>
+            <a th:href="@{/user}" class="pure-menu-heading pure-menu-link">Profile</a>
+            <span sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin/users}" class="pure-menu-heading pure-menu-link">Userlist</a></span>
+            <span sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin/users/new}" class="pure-menu-heading pure-menu-link">New user</a></span>
+            <a th:href="@{/logout}" class="pure-menu-heading pure-menu-link">Logout</a>
+        </div>
+        <br />
+    </div>
+</body>
+</html>
